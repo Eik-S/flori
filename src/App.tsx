@@ -17,13 +17,12 @@ export function App() {
 const styles = {
   background: css`
     height: 100vh;
-    width: 100vw;
+    max-width: 100vw;
     background-color: #b8e4ff;
     display: grid;
     grid-template-columns: 1fr clamp(300px, 400px, 50%) 1fr;
-    grid-template-rows: 1fr repeat(5, 80px);
+    grid-template-rows: 1fr repeat(5, 10%);
     overflow: hidden;
-    position: relative;
   `,
   boot: css`
     z-index: 2;
