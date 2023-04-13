@@ -2,6 +2,7 @@ import { css } from '@emotion/react'
 import { Clouds } from './Clouds'
 import { Counter } from './Counter'
 import { Waves } from './Waves'
+import { Boot } from './Boot'
 
 export function App() {
   return (
@@ -9,7 +10,7 @@ export function App() {
       <Clouds />
       <Counter />
       <Waves />
-      <img css={styles.boot} alt="" src="./images/boot.svg" />
+      <Boot />
     </div>
   )
 }
@@ -17,6 +18,7 @@ export function App() {
 const styles = {
   background: css`
     height: 100vh;
+    max-height: -webkit-fill-available;
     max-width: 100vw;
     background-color: #b8e4ff;
     display: grid;
