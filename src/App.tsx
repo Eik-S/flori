@@ -7,7 +7,7 @@ import { Boot } from './Boot'
 export function App() {
   return (
     <div css={styles.background}>
-      <Clouds />
+      <Clouds css={styles.clouds} />
       <Counter />
       <Waves />
       <Boot />
@@ -25,6 +25,10 @@ const styles = {
     grid-template-columns: 1fr clamp(300px, 400px, 50%) 1fr;
     grid-template-rows: 1fr repeat(5, 10%);
     overflow: hidden;
+  `,
+  clouds: css`
+    grid-column: 1 / span 3;
+    grid-row: 1;
   `,
   boot: css`
     z-index: 2;

@@ -8,7 +8,7 @@ interface InitialStyleProps {
   loopDelay: number
 }
 
-export function Clouds() {
+export function Clouds({ ...props }) {
   const amount = 3
   const speed = 1
   const available = 4
@@ -29,7 +29,7 @@ export function Clouds() {
   }
 
   return (
-    <Fragment>
+    <div css={styles.sky} {...props}>
       {[...Array(amount)].map((_, index) => {
         const props = getInitialStyleProps()
         return (
@@ -41,34 +41,39 @@ export function Clouds() {
           />
         )
       })}
-    </Fragment>
+    </div>
   )
 }
 
 const styles = {
-  cloud: ({ loopDelay, speed, startPosition, width }: InitialStyleProps) => {
-    return css`
-      position: absolute;
-      top: ${Math.random() * 100}px;
-      left: ${startPosition}px;
+  sky: css`
+    overflow: hidden;
+    display: grid;
+    grid-template-columns: 1fr;
+  `,
+  cloud: ({ loopDelay, speed, startPosition, width }: InitialStyleProps) =>
+    css`
+      grid-row: 1;
+      grid-column: 1;
+      margin-top: ${Math.random() * 100}px;
+      margin-left: ${startPosition}px;
       width: ${width}px;
       animation: ${loopDelay}s linear cloud-initial,
         ${speed}s linear ${loopDelay}s infinite cloud-movement;
 
       @keyframes cloud-initial {
         100% {
-          left: 100vw;
+          margin-left: 100vw;
         }
       }
 
       @keyframes cloud-movement {
         0% {
-          left: -${width * 2}px;
+          margin-left: -${width * 2}px;
         }
         100% {
-          left: 100vw;
+          margin-left: 100vw;
         }
       }
-    `
-  },
+    `,
 }
